@@ -12,7 +12,7 @@ app.addHook('onRequest', async (req, reply) => {
   if (req.url === '/healthz') return;
   const key = req.headers['x-api-key'];
   if (!key || key !== API_KEY) {
-    reply.code(401).send({ error: 'unauthorized' });
+    return reply.code(401).send({ error: 'unauthorized' });
   }
 });
 
